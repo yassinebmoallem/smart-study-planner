@@ -517,6 +517,6 @@ Ce projet est sous licence MIT — voir le fichier [LICENSE](LICENSE) pour plus 
 
 *Developpe avec patience, PHP, et beaucoup trop de cafe ☕*
 
-*Version 8 — 2026*
+*Version 1.0 — 2026*
 
 </div>
