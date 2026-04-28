@@ -364,21 +364,6 @@ Lorsque l'etudiant clique sur **Regenerer**, le meme algorithme se relance mais 
 
 ---
 
-## 📸 Captures d'Ecran
-
-> Placez vos captures dans un dossier `screenshots/` a la racine du projet.
-
-| Page | Description |
-|---|---|
-| `screenshots/connexion.png` | Page de connexion et d'inscription |
-| `screenshots/dashboard.png` | Tableau de bord avec sessions du jour et cartes matieres |
-| `screenshots/plan.png` | Vue hebdomadaire detaillee d'un planning de matiere |
-| `screenshots/calendrier.png` | Calendrier mensuel avec sessions et examens |
-| `screenshots/statistiques.png` | Page de statistiques avec graphiques et streak |
-| `screenshots/ajout-matiere.png` | Formulaire d'ajout avec apercu en temps reel |
-
----
-
 ## 🔧 Defis Techniques Rencontres
 
 ### 1. Mise a jour en temps reel sans rechargement de page
