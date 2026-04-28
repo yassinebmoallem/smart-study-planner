@@ -1,138 +1,193 @@
-<div align="center">
-
----
-
-> 🇫🇷 **Version française courte**
->
-> **Smart Study Planner** est une application web de planification d'études intelligente, développée en PHP/MySQL. Elle génère automatiquement un planning personnalisé par matière, adapte les sessions selon la difficulté de chaque cours, et permet de suivre sa progression en temps réel — le tout dans une interface calme et confortable, pensée pour réduire le stress des révisions.
-
----
-
 # 📚 Smart Study Planner
-
-**Your intelligent, stress-free study companion.**
-
-A full-stack PHP/MySQL web application that automatically generates a personalized study schedule based on your subjects, exam dates, difficulty levels, and available hours — with real-time progress tracking, an interactive calendar, and visual statistics.
 
 [![PHP](https://img.shields.io/badge/PHP-8.0%2B-777BB4?style=flat-square&logo=php&logoColor=white)](https://www.php.net/)
 [![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/fr/docs/Web/JavaScript)
 [![Chart.js](https://img.shields.io/badge/Chart.js-4.4-FF6384?style=flat-square&logo=chartdotjs&logoColor=white)](https://www.chartjs.org/)
-[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
-[![Status](https://img.shields.io/badge/status-active-brightgreen?style=flat-square)]()
+[![Licence](https://img.shields.io/badge/licence-MIT-green?style=flat-square)](LICENSE)
+[![Statut](https://img.shields.io/badge/statut-actif-brightgreen?style=flat-square)]()
 
-</div>
+Application web full-stack PHP/MySQL qui genere automatiquement un **planning de revisions personnalise** par matiere, adapte les sessions selon le niveau de difficulte, et permet un suivi de progression en temps reel — dans une interface calme et confortable, pensee pour reduire le stress des examens.
 
 ---
 
-## 📋 Table of Contents
+## 📋 Table des Matieres
 
-- [The Problem & Solution](#-the-problem--solution)
-- [Key Features](#-key-features)
-- [Tech Stack](#-tech-stack)
-- [Screenshots](#-screenshots)
+- [A propos](#-a-propos)
+- [Problematique et Solution](#-problematique-et-solution)
+- [Fonctionnalites](#-fonctionnalites)
+- [Technologies Utilisees](#️-technologies-utilisees)
+- [Architecture du Projet](#-architecture-du-projet)
 - [Installation](#-installation)
-- [Project Structure](#-project-structure)
-- [Planning Algorithm](#-planning-algorithm)
-- [Database Schema](#-database-schema)
-- [Future Improvements](#-future-improvements)
-- [Author](#-author)
+- [Utilisation](#-utilisation)
+- [Structure de la Base de Donnees](#️-structure-de-la-base-de-donnees)
+- [Algorithme de Planification](#-algorithme-de-planification)
+- [Captures d'Ecran](#-captures-decran)
+- [Defis Techniques Rencontres](#-defis-techniques-rencontres)
+- [Ameliorations Futures](#-ameliorations-futures)
+- [Auteur](#-auteur)
+- [Licence](#-licence)
 
 ---
 
-## 💡 The Problem & Solution
+## 📖 A propos
 
-### The Problem
+**Smart Study Planner** est une application web academique developpee en PHP/MySQL qui aide les etudiants a organiser efficacement leurs revisions. Contrairement a un simple agenda, elle genere automatiquement un planning intelligent, matiere par matiere, en tenant compte de la difficulte du cours, des heures disponibles et de la date d'examen.
 
-Most students face the same cycle every exam season: procrastination, last-minute cramming, anxiety, and poor results. Existing tools like calendars or generic to-do apps don't understand the academic context — they don't know that *Thermodynamics* requires twice the effort of *English Literature*, or that you only have 14 days left before your finals.
+### Contexte de developpement
 
-### The Solution
-
-**Smart Study Planner** takes your subjects, your exam dates, and your difficulty assessment as input, and automatically builds a day-by-day study schedule tailored to you. It adapts session lengths based on how hard the subject is, tracks your real progress, and lets you regenerate your plan at any time if you fall behind — turning chaotic revision into a calm, structured process.
-
----
-
-## ✨ Key Features
-
-| Feature | Description |
-|---|---|
-| 🔐 **Secure Authentication** | Registration & login with PHP `password_hash()` + session management |
-| 📖 **Subject Management** | Add, edit, and delete subjects with exam date, difficulty level, and hour estimates |
-| 🤖 **Auto Plan Generation** | Rule-based algorithm generates a session-by-session schedule on subject creation |
-| ✅ **Session Tracking** | Check off completed sessions via AJAX without page reload; progress updates live |
-| 🔁 **Smart Regeneration** | Recalculate the remaining schedule based on actual progress at any time |
-| 📅 **Interactive Calendar** | Monthly calendar view displaying all study sessions and exam dates at a glance |
-| 📊 **Statistics Dashboard** | Daily activity chart (30 days), weekly activity (8 weeks), consecutive-day streak, global completion rate |
-| 💬 **Motivational Quotes** | Rotating daily quotes to maintain focus and positive study mindset |
-| 📱 **Responsive Design** | Fully usable on desktop, tablet, and mobile |
-| 🎨 **Calm UI** | Soft green palette designed to reduce visual stress during long study sessions |
+- Projet realise dans le cadre du cursus **L2 SIG** (Systemes d'Information et de Gestion)
+- Objectif : proposer une solution concrete au probleme de desorganisation des revisions
+- Version **v8** — resultat d'iterations successives sur le design et les fonctionnalites
 
 ---
 
-## 🛠 Tech Stack
+## 💡 Problematique et Solution
+
+### Le Probleme
+
+Chaque saison d'examens, les etudiants reproduisent le meme cycle : procrastination, revisions intensives la veille, stress et mauvais resultats. Les outils classiques (agendas, to-do lists) ne comprennent pas le contexte academique — ils ne savent pas que *Thermodynamique* demande deux fois plus d'effort que *Langue francaise*, ni qu'il ne reste que 14 jours avant les partiels.
+
+### La Solution
+
+**Smart Study Planner** prend en entree vos matieres, vos dates d'examen et votre estimation de difficulte, puis construit automatiquement un planning session par session, adapte a votre progression reelle. Si vous prenez du retard, une seule action suffit pour regenerer intelligemment le reste du planning.
+
+---
+
+## ✨ Fonctionnalites
+
+### Pour tous les utilisateurs
+- ✅ Inscription securisee avec validation des donnees
+- ✅ Connexion avec gestion de session PHP
+- ✅ Interface responsive (desktop, tablette, mobile)
+- ✅ Citations motivantes quotidiennes rotatives
+- ✅ Design calme et confortable (palette vert doux)
+
+### Gestion des Matieres
+- ✅ Ajout d'une matiere avec :
+  - Nom de la matiere
+  - Niveau de difficulte (Facile / Moyen / Difficile)
+  - Date de l'examen
+  - Heures totales a etudier
+  - Heures par semaine disponibles
+- ✅ Modification et suppression de matiere
+- ✅ Barre de progression visuelle par matiere
+- ✅ Indicateur de jours restants avant l'examen
+
+### Planning Intelligent
+- ✅ Generation automatique d'un planning jour par jour a la creation
+- ✅ Regeneration intelligente selon la progression reelle
+- ✅ Vue hebdomadaire detaillee du planning par matiere
+- ✅ Suivi des sessions par case a cocher (AJAX — sans rechargement de page)
+
+### Tableau de Bord
+- ✅ Sessions du jour avec statut en temps reel
+- ✅ Resume des matieres actives et examens a venir
+- ✅ Compteur d'heures restantes pour la journee
+
+### Calendrier
+- ✅ Vue mensuelle interactive
+- ✅ Affichage des sessions d'etude et des dates d'examen
+- ✅ Navigation entre les mois (precedent / suivant)
+
+### Statistiques
+- ✅ Graphique d'activite quotidienne (30 derniers jours)
+- ✅ Graphique d'activite hebdomadaire (8 semaines)
+- ✅ Compteur de jours consecutifs (streak)
+- ✅ Taux de progression global sur l'ensemble des matieres
+
+---
+
+## 🛠️ Technologies Utilisees
 
 ### Backend
-| Technology | Role |
+
+| Technologie | Role |
 |---|---|
-| **PHP 8.0+** | Server-side logic, routing, session handling |
-| **MySQLi** | Database queries and connection management |
-| **MySQL 5.7+** | Relational data storage (users, subjects, study sessions) |
+| **PHP 8.0+** | Logique serveur, routage, gestion des sessions |
+| **MySQLi** | Execution des requetes et gestion de la connexion |
+| **MySQL 5.7+** | Stockage relationnel (utilisateurs, matieres, sessions) |
 
 ### Frontend
-| Technology | Role |
+
+| Technologie | Role |
 |---|---|
-| **HTML5** | Semantic page structure |
-| **CSS3** (custom) | Full design system with CSS variables, flexbox, grid |
-| **JavaScript** (Vanilla) | AJAX calls, live UI updates, form preview |
-| **Chart.js 4.4** | Interactive bar charts for statistics page |
-| **Plus Jakarta Sans** | Google Font — clean, modern, readable at all sizes |
+| **HTML5** | Structure semantique des pages |
+| **CSS3** (systeme custom) | Variables CSS, flexbox, grid, design complet |
+| **JavaScript Vanilla** | Appels AJAX, mises a jour live, apercu du planning |
+| **Chart.js 4.4** | Graphiques interactifs (statistiques) |
+| **Plus Jakarta Sans** | Typographie Google Fonts — claire et lisible |
 
----
+### Outils de Developpement
 
-## 📸 Screenshots
-
-> Place your screenshot images in a `screenshots/` folder at the project root.
-
-| Page | Description |
+| Outil | Usage |
 |---|---|
-| `screenshots/login.png` | Login & registration page |
-| `screenshots/dashboard.png` | Main dashboard with today's sessions and subject cards |
-| `screenshots/plan.png` | Detailed weekly study plan for a subject |
-| `screenshots/calendar.png` | Monthly calendar with sessions and exam markers |
-| `screenshots/stats.png` | Statistics page with charts and streak counter |
-| `screenshots/add-subject.png` | Subject creation form with live plan preview |
+| **phpMyAdmin** | Administration de la base de donnees |
+| **XAMPP / Laragon** | Serveur local Apache + MySQL |
+| **VS Code** | Editeur de code principal |
 
 ---
 
-## 🚀 Installation
+## 🏗️ Architecture du Projet
 
-### Prerequisites
-
-- PHP 8.0 or higher
-- MySQL 5.7 or higher (or MariaDB 10.3+)
-- A local web server: **XAMPP**, **Laragon**, **WAMP**, or PHP's built-in server
+```
+smart-study-planner-v8/
+│
+├── index.php              # Page d'accueil : onglets connexion + inscription
+├── dashboard.php          # Tableau de bord principal
+├── add_subject.php        # Formulaire d'ajout / modification d'une matiere
+├── plan.php               # Vue detaillee du planning pour une matiere
+├── calendar.php           # Calendrier mensuel interactif
+├── stats.php              # Page des statistiques et graphiques
+├── regenerate.php         # Regeneration du planning selon la progression
+├── delete_subject.php     # Suppression d'une matiere (cascade)
+├── toggle_session.php     # Endpoint AJAX : cocher / decocher une session
+├── logout.php             # Destruction de la session + redirection
+│
+├── auth.php               # Garde de session (redirection si non connecte)
+├── connexion.php          # Connexion MySQLi a la base de donnees
+├── planner.php            # ⭐ Coeur de l'algorithme de planification
+├── _helpers.php           # Fonctions utilitaires (formatHours, diffLabel...)
+├── _icons.php             # Bibliotheque d'icones SVG (Feather icons inline)
+├── _sidebar.php           # Composant de navigation laterale reutilisable
+│
+├── style.css              # Systeme de design complet (variables, composants)
+├── script.js              # JS : AJAX, mise a jour live, animations
+│
+└── database.sql           # Schema MySQL : utilisateurs, matieres, sessions_etude
+```
 
 ---
 
-### Option 1 — PHP Built-in Server (quickest)
+## 📦 Installation
+
+### Prerequis
+
+- **PHP 8.0** ou superieur
+- **MySQL 5.7+** ou MariaDB 10.3+
+- Un serveur local : **XAMPP**, **Laragon**, **WAMP**, ou le serveur integre PHP
+
+---
+
+### Option 1 — Serveur integre PHP (le plus rapide)
 
 ```bash
-# Step 1 — Clone or copy the project folder
-git clone https://github.com/your-username/smart-study-planner.git
-cd smart-study-planner
+# Etape 1 — Cloner ou copier le dossier du projet
+git clone https://github.com/yassinebmoallem/smart-study-planner.git
+cd smart-study-planner-v8
 
-# Step 2 — Create the database
-# Open MySQL and run:
+# Etape 2 — Creer la base de donnees
+# Ouvrir MySQL et executer :
 mysql -u root -p < database.sql
 
-# Step 3 — Configure database credentials
-# Edit connexion.php and set your MySQL host, user, password, and DB name
+# Etape 3 — Configurer les identifiants de connexion
+# Editer connexion.php avec votre hote, utilisateur, mot de passe et nom de BDD
 
-# Step 4 — Start the server
+# Etape 4 — Demarrer le serveur
 php -S localhost:8080
 
-# Step 5 — Open your browser
-# Go to: http://localhost:8080
+# Etape 5 — Ouvrir le navigateur
+# Aller sur : http://localhost:8080
 ```
 
 ---
@@ -140,197 +195,343 @@ php -S localhost:8080
 ### Option 2 — XAMPP / WAMP / Laragon
 
 ```
-1. Copy the project folder into:
-   - XAMPP  →  C:/xampp/htdocs/smart-study-planner/
-   - WAMP   →  C:/wamp64/www/smart-study-planner/
-   - Laragon → C:/laragon/www/smart-study-planner/
+1. Copier le dossier du projet dans :
+   - XAMPP   →  C:/xampp/htdocs/smart-study-planner/
+   - WAMP    →  C:/wamp64/www/smart-study-planner/
+   - Laragon →  C:/laragon/www/smart-study-planner/
 
-2. Start Apache and MySQL from your control panel.
+2. Demarrer Apache et MySQL depuis le panneau de controle.
 
-3. Create the database:
-   Open phpMyAdmin → New Database → name it "smart_study"
-   → Import → select database.sql → Go
+3. Creer la base de donnees :
+   Ouvrir phpMyAdmin → Nouvelle base → nommer "smart_study"
+   → Importer → selectionner database.sql → Executer
 
-4. Open your browser at:
+4. Ouvrir le navigateur sur :
    http://localhost/smart-study-planner/
 ```
 
 ---
 
-### Database Configuration
+### Configuration de la Base de Donnees
 
-Open `connexion.php` and update these lines:
+Ouvrir `connexion.php` et mettre a jour les lignes suivantes :
 
 ```php
 $host   = "localhost";
 $dbname = "smart_study";
 $user   = "root";
-$pass   = "";          // your MySQL password
+$pass   = "";          // votre mot de passe MySQL
 ```
 
 ---
 
-## 📁 Project Structure
+## 🚀 Utilisation
 
-```
-smart-study-planner-v8/
-│
-├── index.php              ← Landing page: login + registration tabs
-├── dashboard.php          ← Main hub: stats, today's sessions, subject cards
-├── add_subject.php        ← Create or edit a subject (triggers plan generation)
-├── plan.php               ← Detailed weekly session view for one subject
-├── calendar.php           ← Full monthly calendar with sessions + exam dates
-├── stats.php              ← Statistics: charts, streak, global progress
-├── regenerate.php         ← Recalculate plan based on current progress
-├── delete_subject.php     ← Delete subject + cascade remove all sessions
-├── toggle_session.php     ← AJAX endpoint: mark session done / undone
-├── logout.php             ← Destroy session and redirect
-│
-├── auth.php               ← Session guard (redirects if not logged in)
-├── connexion.php          ← MySQLi database connection
-├── planner.php            ← ⭐ Core planning algorithm
-├── _helpers.php           ← Utility functions (formatHours, diffLabel, etc.)
-├── _icons.php             ← SVG icon library (inline Feather icons)
-├── _sidebar.php           ← Reusable sidebar navigation component
-│
-├── style.css              ← Full design system (CSS variables, components)
-├── script.js              ← Vanilla JS: AJAX, live UI updates, animations
-│
-└── database.sql           ← MySQL schema: utilisateurs, matieres, sessions_etude
-```
+### Premiere utilisation
 
----
+1. **Lancer l'application** via le navigateur
+2. **Creer un compte** :
+   - Cliquer sur l'onglet "Inscription"
+   - Remplir les champs : nom complet, email, mot de passe
+   - Cliquer sur "Creer mon compte"
+3. **Se connecter** :
+   - Entrer email et mot de passe
+   - Cliquer sur "Se connecter"
+   - Redirection automatique vers le tableau de bord
 
-## 🤖 Planning Algorithm
+### Ajouter une matiere
 
-The planning engine lives in `planner.php`. It uses a **rule-based approach** — deterministic, fast, and fully explainable.
+1. Cliquer sur **"Nouvelle matiere"** depuis le tableau de bord
+2. Renseigner les informations :
+   - Nom de la matiere (ex : Mathematiques, Physique...)
+   - Niveau de difficulte (Facile / Moyen / Difficile)
+   - Date de l'examen
+   - Heures totales a etudier
+   - Heures disponibles par semaine
+3. Un apercu du planning s'affiche en temps reel
+4. Cliquer sur **"Generer mon planning"**
+5. Redirection automatique vers le planning detaille
 
-### How It Works — Step by Step
+### Suivre sa progression
 
-```
-Input:
-  Subject name, difficulty level, exam date,
-  total hours to study, hours already completed
-
-Step 1 — Calculate Days Remaining
-  daysLeft = examDate - today  (in days)
-  If daysLeft ≤ 0 → abort (exam already passed)
-
-Step 2 — Calculate Remaining Work
-  hoursLeft = totalHours - completedHours
-
-Step 3 — Compute Base Daily Hours
-  baseDailyHours = hoursLeft / daysLeft
-
-Step 4 — Apply Difficulty Multiplier
-  ┌─────────────┬────────────┬─────────────────────────────┐
-  │ Difficulty  │ Multiplier │ Effect                      │
-  ├─────────────┼────────────┼─────────────────────────────┤
-  │ difficile   │  × 1.25   │ Longer sessions, more depth │
-  │ moyen       │  × 1.00   │ Standard pacing             │
-  │ facile      │  × 0.80   │ Shorter sessions, less load │
-  └─────────────┴────────────┴─────────────────────────────┘
-  dailyHours = baseDailyHours × multiplier
-
-Step 5 — Cap Session Length
-  dailyHours = clamp(dailyHours, min=0.5h, max=6h)
-  (Prevents burnout and unrealistic micro-sessions)
-
-Step 6 — Clear Pending Sessions
-  DELETE all future (fait = 0) sessions for this subject
-
-Step 7 — Insert Daily Sessions
-  For each day from today to examDate:
-    sessionHours = min(dailyHours, hoursLeft)
-    INSERT session (matière_id, date, hours, fait=0)
-    hoursLeft -= sessionHours
-    if hoursLeft ≤ 0 → stop
-
-Output:
-  N rows in sessions_etude, one per day, covering
-  all remaining study hours up to the exam date.
-```
-
-### Regeneration
-
-When the student clicks **Regenerate**, the same algorithm runs again but reads the updated `heures_completees` value — so only the **remaining** hours are redistributed across the **remaining** days. This lets the student recover cleanly from days they missed.
+1. Depuis le **tableau de bord**, cocher les sessions realisees
+2. La barre de progression se met a jour instantanement (AJAX)
+3. En cas de retard, cliquer sur **"Regenerer"** pour redistribuer les heures restantes
 
 ---
 
-## 🗄 Database Schema
+## 🗄️ Structure de la Base de Donnees
 
-```sql
--- Users
-CREATE TABLE utilisateurs (
-    id            INT AUTO_INCREMENT PRIMARY KEY,
-    nom           VARCHAR(100)  NOT NULL,
-    email         VARCHAR(150)  NOT NULL UNIQUE,
-    mot_de_passe  VARCHAR(255)  NOT NULL,       -- bcrypt via password_hash()
-    cree_le       DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+### Table : `utilisateurs`
 
--- Subjects
-CREATE TABLE matieres (
-    id                  INT AUTO_INCREMENT PRIMARY KEY,
-    utilisateur_id      INT NOT NULL,
-    nom                 VARCHAR(150) NOT NULL,
-    difficulte          ENUM('facile','moyen','difficile') NOT NULL DEFAULT 'moyen',
-    date_examen         DATE NOT NULL,
-    heures_totales      FLOAT NOT NULL DEFAULT 0,
-    heures_par_semaine  FLOAT NOT NULL DEFAULT 0,
-    heures_completees   FLOAT NOT NULL DEFAULT 0,
-    cree_le             DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id) ON DELETE CASCADE
-);
+| Colonne | Type | Contraintes | Description |
+|---|---|---|---|
+| id | INT | PRIMARY KEY, AUTO_INCREMENT | Identifiant unique |
+| nom | VARCHAR(100) | NOT NULL | Nom complet de l'utilisateur |
+| email | VARCHAR(150) | UNIQUE, NOT NULL | Adresse email |
+| mot_de_passe | VARCHAR(255) | NOT NULL | Mot de passe hache (bcrypt) |
+| cree_le | DATETIME | DEFAULT NOW() | Date d'inscription |
 
--- Study Sessions
-CREATE TABLE sessions_etude (
-    id            INT AUTO_INCREMENT PRIMARY KEY,
-    matiere_id    INT NOT NULL,
-    date_session  DATE NOT NULL,
-    heures        FLOAT NOT NULL DEFAULT 0,
-    fait          TINYINT(1) NOT NULL DEFAULT 0,   -- 0 = pending, 1 = done
-    FOREIGN KEY (matiere_id) REFERENCES matieres(id) ON DELETE CASCADE
-);
-```
+### Table : `matieres`
 
-**Entity Relationships:**
+| Colonne | Type | Contraintes | Description |
+|---|---|---|---|
+| id | INT | PRIMARY KEY, AUTO_INCREMENT | Identifiant unique |
+| utilisateur_id | INT | FOREIGN KEY NOT NULL | Reference vers utilisateurs(id) |
+| nom | VARCHAR(150) | NOT NULL | Nom de la matiere |
+| difficulte | ENUM | NOT NULL | 'facile', 'moyen' ou 'difficile' |
+| date_examen | DATE | NOT NULL | Date de l'examen |
+| heures_totales | FLOAT | NOT NULL | Total d'heures a etudier |
+| heures_par_semaine | FLOAT | NOT NULL | Disponibilite hebdomadaire |
+| heures_completees | FLOAT | NOT NULL | Heures effectivement realisees |
+| cree_le | DATETIME | DEFAULT NOW() | Date de creation |
+
+### Table : `sessions_etude`
+
+| Colonne | Type | Contraintes | Description |
+|---|---|---|---|
+| id | INT | PRIMARY KEY, AUTO_INCREMENT | Identifiant unique |
+| matiere_id | INT | FOREIGN KEY NOT NULL | Reference vers matieres(id) |
+| date_session | DATE | NOT NULL | Date de la session |
+| heures | FLOAT | NOT NULL | Duree de la session (en heures) |
+| fait | TINYINT(1) | NOT NULL DEFAULT 0 | 0 = a faire / 1 = realisee |
+
+### Relations et integrite
+
+- **1:N** — Un utilisateur peut avoir plusieurs matieres
+- **1:N** — Une matiere peut avoir plusieurs sessions d'etude
+- **CASCADE** — La suppression d'une matiere supprime automatiquement toutes ses sessions
+
 ```
 utilisateurs (1) ──── (N) matieres (1) ──── (N) sessions_etude
 ```
 
 ---
 
-## 🔮 Future Improvements
+## 🤖 Algorithme de Planification
 
-- [ ] **Dark mode** — toggle between calm-light and dark themes
-- [ ] **Push / Email reminders** — notify users of upcoming sessions
-- [ ] **Export to PDF** — printable weekly study schedule
-- [ ] **Pomodoro timer** — built-in focus timer per session
-- [ ] **Multi-language support** — Arabic, English, French selector
-- [ ] **Mobile app (PWA)** — installable progressive web app for offline use
-- [ ] **AI suggestions** — recommend optimal study hours based on past performance patterns
-- [ ] **Group study rooms** — share a schedule and study with friends
-- [ ] **Google Calendar sync** — export sessions to external calendar
+Le moteur de planification est dans `planner.php`. Il utilise une approche **rule-based** — deterministe, rapide et entierement explicable.
+
+### Fonctionnement — Etape par Etape
+
+```
+Entrees :
+  Nom de la matiere, niveau de difficulte, date d'examen,
+  heures totales a etudier, heures deja realisees
+
+Etape 1 — Calcul des jours restants
+  joursRestants = dateExamen - aujourd'hui  (en jours)
+  Si joursRestants <= 0 → arret (examen deja passe)
+
+Etape 2 — Calcul du travail restant
+  heuresRestantes = heuresTotales - heuresRealisees
+
+Etape 3 — Calcul de la base quotidienne
+  baseJournaliere = heuresRestantes / joursRestants
+
+Etape 4 — Application du multiplicateur de difficulte
+  ┌─────────────┬───────────────┬──────────────────────────────────┐
+  │ Difficulte  │ Multiplicateur│ Effet                            │
+  ├─────────────┼───────────────┼──────────────────────────────────┤
+  │ difficile   │   x 1.25     │ Sessions plus longues, plus dense│
+  │ moyen       │   x 1.00     │ Rythme standard                  │
+  │ facile      │   x 0.80     │ Sessions allegees                │
+  └─────────────┴───────────────┴──────────────────────────────────┘
+  heuresJournalieres = baseJournaliere × multiplicateur
+
+Etape 5 — Plafonnement de la duree de session
+  heuresJournalieres = clamp(valeur, min=0.5h, max=6h)
+  (Evite le surmenage et les micro-sessions irrealistes)
+
+Etape 6 — Suppression des sessions en attente
+  DELETE toutes les sessions futures (fait = 0) de cette matiere
+
+Etape 7 — Insertion des sessions quotidiennes
+  Pour chaque jour de aujourd'hui jusqu'a dateExamen :
+    sessionHeures = min(heuresJournalieres, heuresRestantes)
+    INSERT session (matiere_id, date, heures, fait=0)
+    heuresRestantes -= sessionHeures
+    si heuresRestantes <= 0 → arret
+
+Sortie :
+  N lignes dans sessions_etude, une par jour, couvrant
+  toutes les heures restantes jusqu'a la date d'examen.
+```
+
+### Regeneration Intelligente
+
+Lorsque l'etudiant clique sur **Regenerer**, le meme algorithme se relance mais lit la valeur mise a jour de `heures_completees` — seules les **heures restantes** sont redistribuees sur les **jours restants**. Cela permet a l'etudiant de rattraper proprement les jours manques.
 
 ---
 
-## 👤 Author
+## 📸 Captures d'Ecran
+
+> Placez vos captures dans un dossier `screenshots/` a la racine du projet.
+
+| Page | Description |
+|---|---|
+| `screenshots/connexion.png` | Page de connexion et d'inscription |
+| `screenshots/dashboard.png` | Tableau de bord avec sessions du jour et cartes matieres |
+| `screenshots/plan.png` | Vue hebdomadaire detaillee d'un planning de matiere |
+| `screenshots/calendrier.png` | Calendrier mensuel avec sessions et examens |
+| `screenshots/statistiques.png` | Page de statistiques avec graphiques et streak |
+| `screenshots/ajout-matiere.png` | Formulaire d'ajout avec apercu en temps reel |
+
+---
+
+## 🔧 Defis Techniques Rencontres
+
+### 1. Mise a jour en temps reel sans rechargement de page
+**Probleme** : Cocher une session declenchait un rechargement complet de la page, degradant l'experience utilisateur.
+
+**Solution implementee** :
+- Creation d'un endpoint dedie `toggle_session.php` qui retourne du JSON
+- Appel `fetch()` asynchrone depuis `script.js` au clic sur la case
+- Mise a jour du DOM (barre de progression, compteur) sans rechargement
+- Gestion des erreurs reseau avec `try/catch`
+
+**Resultat** : Interface fluide et reactive, comparable a une application SPA
+
+---
+
+### 2. Algorithme de regeneration adaptative
+**Probleme** : Recalculer un planning quand l'etudiant a deja realise une partie des sessions sans ecraser les donnees existantes.
+
+**Solution architecturale** :
+- Suppression uniquement des sessions avec `fait = 0` (futures, non realisees)
+- Relecture de `heures_completees` pour ne redistribuer que le travail restant
+- Calcul base sur les jours restants reels (pas les jours initiaux)
+
+**Resultat** : Le planning se regenere intelligemment en respectant ce qui a deja ete fait
+
+---
+
+### 3. Gestion de la progression circulaire (SVG dynamique)
+**Probleme** : Afficher une jauge circulaire SVG dont la valeur change en temps reel sans librairie externe.
+
+**Solution technique** :
+- Calcul du `stroke-dasharray` cote PHP au chargement initial
+- Recalcul en JavaScript apres chaque appel AJAX via `updateProgressCircle(data)`
+- Formule : `dashArray = round(226.2 x progress / 100)` (circonference du cercle r=36)
+
+**Resultat** : Jauge animee sans aucune dependance JavaScript externe
+
+---
+
+### 4. Calcul du streak de jours consecutifs
+**Probleme** : Calculer dynamiquement le nombre de jours d'etude consecutifs depuis la base de donnees.
+
+**Solution SQL + PHP** :
+- Requete SQL triee par date decroissante sur les sessions realisees (`fait = 1`)
+- Boucle PHP comparant chaque date a la date courante en remontant jour par jour
+- Arret des qu'un jour sans session est detecte
+
+**Resultat** : Compteur de streak precis, mis a jour a chaque connexion
+
+---
+
+### 5. Systeme de design coherent avec variables CSS
+**Probleme** : Maintenir une coherence visuelle sur 10+ pages sans framework CSS externe.
+
+**Solution de design** :
+- Palette complete definie via variables CSS (`--primary`, `--surface-0`, `--shadow-md`...)
+- Composants reutilisables (`.stat-card`, `.subject-card`, `.diff-badge`)
+- Sidebar extraite dans `_sidebar.php` et incluse sur chaque page
+- Icones SVG centralisees dans `_icons.php` via une fonction `icon($name, $size)`
+
+**Resultat** : Charte graphique uniforme et facilement modifiable depuis un seul fichier
+
+---
+
+## 🔮 Ameliorations Futures
+
+### Court terme (Sprint 1-2)
+- [ ] Mode sombre — bascule entre theme clair et theme sombre
+- [ ] Rappels par email — notification avant les sessions du jour
+- [ ] Export PDF — planning hebdomadaire imprimable
+- [ ] Timer Pomodoro integre par session d'etude
+
+### Moyen terme (Mois 1-3)
+- [ ] Support multilingue — selecteur Arabe / Francais / Anglais
+- [ ] Application web progressive (PWA) — installable et utilisable hors-ligne
+- [ ] Suggestions IA — recommandation d'heures optimales selon les performances passees
+- [ ] Synchronisation Google Agenda — export des sessions vers un calendrier externe
+
+### Long terme (Trimestre 2-4)
+- [ ] Salles d'etude partagees — partager un planning et reviser avec des amis
+- [ ] Version mobile native (React Native ou Flutter)
+- [ ] Tableau de bord enseignant — suivi collectif d'une promotion
+- [ ] Generation de rapports de progression academique
+
+---
+
+## 👤 Auteur
 
 **Yassine Ben Moallem (Oshino)**
-Student Developer — L2 SIG
-Based in Sidi Henri, Tunisia
+Etudiant Developpeur — L2 SIG
+Sidi Henri, Tunisie
 
-- **Email** : yassine.bmaalem@gmail.com
-- **LinkedIn** : [Yassine Ben Maallem](https://www.linkedin.com/in/yassine-ben-maallem-02b87330b/)
-- **GitHub** : [@yassinebmoallem](https://github.com/yassinebmoallem)
+| Plateforme | Lien |
+|---|---|
+| Email | yassine.bmaalem@gmail.com |
+| LinkedIn | [Yassine Ben Maallem](https://www.linkedin.com/in/yassine-ben-maallem-02b87330b/) |
+| GitHub | [@yassinebmoallem](https://github.com/yassinebmoallem) |
+
+---
+
+## 📊 Statistiques du Projet
+
+| Metrique | Valeur |
+|---|---|
+| **Langage principal** | PHP 8.0 |
+| **Base de donnees** | MySQL 5.7+ |
+| **Pages de l'application** | 7 |
+| **Fichiers PHP** | 19 |
+| **Nombre de tables SQL** | 3 |
+| **Version actuelle** | v8 |
+| **Interface** | Responsive (desktop + mobile) |
+
+---
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! Pour contribuer :
+
+1. Forker le projet
+2. Creer une branche feature (`git checkout -b feature/NouvelleFeature`)
+3. Committer les modifications (`git commit -m 'Ajout de NouvelleFeature'`)
+4. Pousser vers la branche (`git push origin feature/NouvelleFeature`)
+5. Ouvrir une Pull Request
+
+### Conventions de contribution
+- Code commente en francais
+- Respect des conventions de nommage PHP (snake_case pour les variables)
+- Documentation mise a jour pour toute nouvelle fonctionnalite
+
+---
+
+## 📄 Licence
+
+Ce projet est sous licence MIT — voir le fichier [LICENSE](LICENSE) pour plus de details.
+
+---
+
+## 🙏 Remerciements
+
+- [Chart.js](https://www.chartjs.org/) — Bibliotheque de graphiques open-source
+- [Feather Icons](https://feathericons.com/) — Bibliotheque d'icones SVG minimalistes
+- [Google Fonts — Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) — Typographie principale
+- [PHP Documentation](https://www.php.net/docs.php) — Reference langage
+- Tous les camarades et enseignants qui ont teste et donne leur avis
 
 ---
 
 <div align="center">
 
-**⭐ If this project helped you, leave a star — it means a lot!**
+**⭐ Si ce projet vous a ete utile, laissez une etoile — ca compte vraiment !**
 
-*Built with patience, PHP, and too many cups of coffee ☕*
+*Developpe avec patience, PHP, et beaucoup trop de cafe ☕*
+
+*Version 8 — 2025*
 
 </div>
